@@ -1,4 +1,5 @@
-<h1>pictures!</h1>
+<h1>pictures (<%= @pictures.length %>)</h1>
+<%= link_to("New Picture", "/pictures/new") %>
 
 <% @pictures.each do |picture| %>
 	<p><%= picture.title %>, <%= picture.artist %></p>
