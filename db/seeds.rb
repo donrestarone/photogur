@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Picture.create(
+	title: 'The old church on the cost of White sea',
+	artist: 'Sergey Ershov',
+	url: 'http://bitmakerlabs.s3.amazonaws.com/photogur/house.jpg'
+)
+
+Picture.create(
+	title: 'Sea Power',
+	artist: 'Stephen Scullion',
+	url: 'http://bitmakerlabs.s3.amazonaws.com/photogur/wave.jpg'
+)
+
+Picture.create(
+	title: 'Into the poppies',
+	artist: 'John Wilhelm',
+	url: 'http://bitmakerlabs.s3.amazonaws.com/photogur/girl.jpg'
+)
