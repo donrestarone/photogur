@@ -23,3 +23,15 @@ Picture.create(
 	artist: 'John Wilhelm',
 	url: 'http://bitmakerlabs.s3.amazonaws.com/photogur/girl.jpg'
 )
+
+Picture.create(
+	title: 'Into the poppies',
+	artist: 'John Wilhelm',
+	url: 'http://bitmakerlabs.s3.amazonaws.com/photogur/girl.jpg'
+)
+
+Picture.create(
+	title: 'Maserati Berlinetta',
+	artist: 'Pininfarina',
+	url: 'https://images.cdn.circlesix.co/image/1/700/0/uploads/posts/2016/04/670fd4c2550ccbedbcff2f4c28e1c431.jpg'
+)
