@@ -11,8 +11,11 @@ class SessionsController < ApplicationController
 
   	if u && u.authenticate(user_password)
   		session[:user_id] = u.id
+
+  		flash[:notice] = 'login success'
   		redirect_to root_url
   	else 
+  		flash[:error] = 'email or password invalid'
   		render :new
   	end 
   end

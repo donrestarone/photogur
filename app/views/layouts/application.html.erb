@@ -9,6 +9,22 @@
   </head>
 
   <body>
+  	<% if flash[:error] %>
+
+	  	<div class="flasherror">
+	  		<%= flash[:error] %>
+	  		
+	  	</div>
+	<% end %>
+
+	<% if flash[:notice] %>
+
+	  	<div class="positiveflash">
+	  		<%= flash[:notice] %>
+	  		
+	  	</div>
+	<% end %> 
+	
   	<p>
   		<% if current_user %> 
   		hello <%= current_user.email %> 
