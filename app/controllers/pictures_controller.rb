@@ -10,9 +10,13 @@ class PicturesController < ApplicationController
 	def show
 		id = params[:id]
 		@picture = Picture.find(id)
+
+		@picture_owner = @picture.user
+
 	end 
 
 	def new 
+		ensure_login
 		@picture = Picture.new
 	end 
 

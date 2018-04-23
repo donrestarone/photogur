@@ -1,9 +1,13 @@
 <h1>pictures (<%= @pictures.length %>)</h1>
-<%= link_to("New Picture", "/pictures/new") %>
+
+	<%= link_to("New Picture", "/pictures/new") %>
 
 <% @pictures.each do |picture| %>
-	<p><%= picture.title %>, <%= picture.artist %></p>
-	<img src="<%= picture.url %>" alt="<%= picture.title %>">
+	<p><%= picture.title %>, <%= picture.artist%>, uploaded by: <%= picture.user.email %></p>
+	<%= link_to picture_path(picture) do %>
+		<img src="<%= picture.url %>" alt="<%= picture.title %>">
+	<% end %>
+	
 <% end %>
 
 <h1>recent pictures</h1>
