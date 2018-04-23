@@ -17,17 +17,17 @@ class PicturesController < ApplicationController
 
 	def new 
 		ensure_login
-		@picture = Picture.new
+			@picture = Picture.new
 	end 
 
 	def create
 		ensure_login
-		@picture = Picture.new
+			@picture = Picture.new
 
-		@picture.title = params[:picture][:title]
-		@picture.artist = params[:picture][:artist]
-		@picture.url = params[:picture][:url]
-		@picture.user_id = current_user.id
+			@picture.title = params[:picture][:title]
+			@picture.artist = params[:picture][:artist]
+			@picture.url = params[:picture][:url]
+			@picture.user_id = current_user.id
 
 		if @picture.save
 			#if the picture gets saved, generate a get request to "/pictures" (the index)
@@ -40,17 +40,24 @@ class PicturesController < ApplicationController
 
 	def destroy
 		@picture = Picture.find(params[:id])
+
 	 	if current_user.id == @picture.user.id
 			
 			@picture.destroy 
 			redirect_to '/pictures'
 		else
-			redirect_to pictures_path
+			
+			redirect_to pictures_path, flash: {notice: 'must be picture owner to destroy'}
 		end
 	end 
 
 	def edit
 		@picture = Picture.find(params[:id])
+		if current_user == @picture.user
+			render :edit
+		else
+			redirect_to pictures_path, flash: {notice: 'must be picture owner to destroy'}
+		end
 	end 
 
 	def update

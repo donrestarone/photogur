@@ -2,6 +2,12 @@
 
 	<%= link_to("New Picture", "/pictures/new") %>
 
+<h1>recent pictures</h1>
+<% @most_recent_pictures.each do |picture| %> 
+	<p><%= picture.title %>, <%= picture.artist %></p>
+	<img src="<%= picture.url %>" alt="<%= picture.title %>">
+<% end %> 
+
 <% @pictures.each do |picture| %>
 	<p><%= picture.title %>, <%= picture.artist%>, uploaded by: <%= picture.user.email %></p>
 	<%= link_to picture_path(picture) do %>
@@ -10,11 +16,7 @@
 	
 <% end %>
 
-<h1>recent pictures</h1>
-<% @most_recent_pictures.each do |picture| %> 
-	<p><%= picture.title %>, <%= picture.artist %></p>
-	<img src="<%= picture.url %>" alt="<%= picture.title %>">
-<% end %> 
+
 
 <h1>pictures added in the past month</h1>
 <% @picture_month.each do |picture| %> 
