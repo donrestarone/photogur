@@ -47,3 +47,11 @@ Picture.create(
 	url: 'https://d39a3h63xew422.cloudfront.net/wp-content/uploads/2018/01/30092928/Robb-Pritchard-Safari-911-21-1000x667.jpg',
 	user_id: 3
 )
+
+
+Picture.create(
+	title: 'Bitmaker',
+	artist: 'bitmaker@ga.com',
+	url: 'http://www.quantifire.net/blog/wp-content/uploads/2014/11/Bitmaker_Labs.jpg',
+	user_id: 4
+)

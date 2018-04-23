@@ -21,11 +21,13 @@ class PicturesController < ApplicationController
 	end 
 
 	def create
+		ensure_login
 		@picture = Picture.new
 
 		@picture.title = params[:picture][:title]
 		@picture.artist = params[:picture][:artist]
 		@picture.url = params[:picture][:url]
+		@picture.user_id = current_user.id
 
 		if @picture.save
 			#if the picture gets saved, generate a get request to "/pictures" (the index)
@@ -36,10 +38,15 @@ class PicturesController < ApplicationController
 		end 
 	end 
 
-	def destroy 
+	def destroy
 		@picture = Picture.find(params[:id])
-		@picture.destroy 
-		redirect_to '/pictures'
+	 	if current_user.id == @picture.user.id
+			
+			@picture.destroy 
+			redirect_to '/pictures'
+		else
+			redirect_to pictures_path
+		end
 	end 
 
 	def edit
@@ -49,15 +56,17 @@ class PicturesController < ApplicationController
 	def update
 		@picture = Picture.find(params[:id])
 
-		@picture.title = params[:picture][:title]
-		@picture.artist = params[:picture][:artist]
-		@picture.url = params[:picture][:url]
-	 
+		if current_user.id == @picture.user.id
 
-		if @picture.save
-			redirect_to "/pictures/#{@picture.id}"
-		else
-			render :edit
-		end 
+			@picture.title = params[:picture][:title]
+			@picture.artist = params[:picture][:artist]
+			@picture.url = params[:picture][:url]
+			
+			if @picture.save
+				redirect_to "/pictures/#{@picture.id}"
+			end
+		else 
+			redirect_to pictures_path
+		end
 	end
 end
